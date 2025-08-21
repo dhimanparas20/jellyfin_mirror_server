@@ -39,3 +39,4 @@ services:
       - ./downloads:/Uploads
       - ./rclone.conf:/app/conf/rclone.conf
       - ./cache:/app/.cache
+      - ./accounts:/app/accounts
