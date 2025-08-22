@@ -37,7 +37,7 @@ services:
       - RCLONE_AUTO_UPLOAD_FILE_MAX_SIZE=40G
       - FIX_DATA_VOLUME_PERMISSIONS=true
     volumes:
-      - ./downloads:/Uploads
+      - ./downloads:/data
       - ./filebrowser.db:/app/filebrowser.db
       - ./cache:/app/.cache
       - ./configs/rclone.conf:/app/conf/rclone.conf
