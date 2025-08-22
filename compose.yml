@@ -22,7 +22,7 @@ services:
       # Domain and Caddyhello
       - DOMAIN=https://t2.mstservices.tech
       - CADDY_LOG_LEVEL=WARN
-      - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
+      # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
       # FileBrowser
       - ENABLE_FILEBROWSER=true
@@ -34,7 +34,7 @@ services:
       - RCLONE_AUTO_UPLOAD_PROVIDER=gdrive # Only the first remote will be used! mega,putio
       - RCLONE_AUTO_UPLOAD_REMOTE_PATH=/
       - RCLONE_AUTO_UPLOAD_FILE_MIN_SIZE=10K
-      - RCLONE_AUTO_UPLOAD_FILE_MAX_SIZE=40G
+      - RCLONE_AUTO_UPLOAD_FILE_MAX_SIZE=45G
       - FIX_DATA_VOLUME_PERMISSIONS=true
     volumes:
       - ./downloads:/data
