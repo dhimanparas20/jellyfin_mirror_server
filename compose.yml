@@ -5,7 +5,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "6800:6800"
     environment:
       # User and permissions
       - PUID=1000
@@ -21,22 +20,25 @@ services:
       - ARIA2_EXTERNAL_PORT=443
 
       # Domain and Caddyhello
-      - DOMAIN=https://server.mstservices.tech
+      - DOMAIN=https://t2.mstservices.tech
       - CADDY_LOG_LEVEL=WARN
+      - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
       # FileBrowser
       - ENABLE_FILEBROWSER=true
 
       # Rclone
       - ENABLE_RCLONE=true
+
       #  - RCLONE_CONFIG_BASE64=...
-      - RCLONE_AUTO_UPLOAD_PROVIDER=gdrive,mega,putio  # Only the first remote will be used!
+      - RCLONE_AUTO_UPLOAD_PROVIDER=gdrive # Only the first remote will be used! mega,putio
       - RCLONE_AUTO_UPLOAD_REMOTE_PATH=/
       - RCLONE_AUTO_UPLOAD_FILE_MIN_SIZE=10K
-      - RCLONE_AUTO_UPLOAD_FILE_MAX_SIZE=80G
+      - RCLONE_AUTO_UPLOAD_FILE_MAX_SIZE=40G
       - FIX_DATA_VOLUME_PERMISSIONS=true
     volumes:
       - ./downloads:/Uploads
-      - ./rclone.conf:/app/conf/rclone.conf
+      - ./filebrowser.db:/app/filebrowser.db
       - ./cache:/app/.cache
-      - ./accounts:/app/accounts
+      - ./configs/rclone.conf:/app/conf/rclone.conf
+#      - ./configs/aria2.conf:/app/conf/aria2.conf  #This cuases gdrive upload to not work
