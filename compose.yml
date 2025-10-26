@@ -1,6 +1,7 @@
 services:
   aria2-ui:
     restart: unless-stopped
+    container_name: aria-mirror
     image: wahyd4/aria2-ui:latest
     ports:
       - "80:80"
