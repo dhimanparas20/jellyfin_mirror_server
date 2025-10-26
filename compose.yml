@@ -3,7 +3,7 @@ networks:
     driver: bridge
 
 services:
-  aria2-ui:
+  aria2c:
     restart: unless-stopped
     container_name: aria2c
     image: wahyd4/aria2-ui:latest
@@ -27,7 +27,7 @@ services:
       - ARIA2_EXTERNAL_PORT=443
 
       # Domain and Caddyhello
-      - DOMAIN=t3.privatedns.org
+      - DOMAIN=mirror.mstservices.tech
       - CADDY_LOG_LEVEL=INFO
       # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
@@ -47,26 +47,42 @@ services:
       - ./data:/data
       - ./cache:/app/.cache
       - ./configs/rclone.conf:/app/conf/rclone.conf
+      - ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
 #      - ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
 #      - ./configs/aria2.conf:/app/conf/aria2.conf  #This cuases gdrive upload to not work
 
+#  plex:
+#    container_name: plex
+#    image: spritsail/plex-media-server
+#    volumes:
+#      - ./data:/media:rw # The media folder
+#      - ./transcode:/transcode # Transcoder temporary directory
+#      - ./config:/config # Configurations
+#    environment:
+#      - LOG_DEBUG=0
+#      - LOG_VERBOSE=0
+#      - PLEX_CLAIM=claim-5PhyapPgsC31GUA_YHLB
+#    restart: unless-stopped
+#    hostname: "kens-plex-server" # change the name to whatever you like
+#    ports:
+#      - "32400:32400" # The web port
+#      - "3005:3005" # The following ports are optional
 
-  plex:
-    image: linuxserver/plex:latest
-    container_name: plex
-#    network_mode: host  # Important for Plex discovery and DLNA to work properly
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    user: 1000:1000
     environment:
-      - PUID=1000       # Replace with your user ID
-      - PGID=1000       # Replace with your group ID
-      - TZ=Asia/Kolkata # Set your timezone
-      - PLEX_CLAIM=claim-eSq-C-bKLhq5bR_ZhH4L
+      - TZ=UTC
     volumes:
-      - ./config:/config           # Plex configuration
-      - ./data:/data/tvshows    # TV shows folder
-      - ./data:/data/movies      # Movies folder
+      - ./data:/media
+      - ./config:/config
+      - ./cache:/cache
+    ports:
+      - 8096:8096   # HTTP web interface
+      # - 8920:8920 # HTTPS (optional, needs extra setup)
+      # - 7359:7359/udp # Auto-discovery (optional)
+      # - 1900:1900/udp # DLNA (optional)
     restart: unless-stopped
     networks:
       - mynet
-    ports:
-      - "32400:32400"
-
