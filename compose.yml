@@ -20,7 +20,7 @@ services:
       - ARIA2_EXTERNAL_PORT=443
 
       # Domain and Caddyhello
-      - DOMAIN=https://t2.mstservices.tech
+      - DOMAIN=https://go.mstservices.tech
       - CADDY_LOG_LEVEL=WARN
       # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
@@ -28,7 +28,7 @@ services:
       - ENABLE_FILEBROWSER=true
 
       # Rclone
-      - ENABLE_RCLONE=true
+      - ENABLE_RCLONE=false
 
       #  - RCLONE_CONFIG_BASE64=...
       - RCLONE_AUTO_UPLOAD_PROVIDER=gdrive # Only the first remote will be used! mega,putio
