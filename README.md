@@ -3,6 +3,10 @@
 A powerful, self-hosted, all-in-one download, media, and file management suite, designed for easy deployment on your own server or cloud VM (such as AWS EC2).  
 This project combines [Aria2](https://aria2.github.io/), [FileBrowser](https://filebrowser.org/), [Rclone](https://rclone.org/), [Jellyfin](https://jellyfin.org/), and [Caddy](https://caddyserver.com/) for secure, flexible, and user-friendly access to your downloads and media.
 
+## Uses the follwing Repos
+- [Aria2 UI](https://github.com/wahyd4/aria2-ariang-docker)
+- [Aria2 Docker Compose](https://github.com/wahyd4/aria2-ariang-x-docker-compose/tree/master)
+
 ---
 
 ## 🚀 About
