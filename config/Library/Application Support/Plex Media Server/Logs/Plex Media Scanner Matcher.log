@@ -1,7 +1,0 @@
-Oct 26, 2025 21:30:39.450 [547985739256] INFO - Plex Media Scanner v1.42.2.10156-f737b826c - Docker Docker Container (LinuxServer.io) aarch64 - build: linux-aarch64 - GMT 05:30
-Oct 26, 2025 21:30:39.452 [547985739256] INFO - Linux version: 6.12.34+rpt-rpi-v8, language: en-US
-Oct 26, 2025 21:30:39.453 [547985739256] INFO - Processor: 4-core ARM Cortex-A53
-Oct 26, 2025 21:30:39.453 [547985739256] INFO - /usr/lib/plexmediaserver/Plex Media Scanner --match --type 2 --log-file-suffix  Matcher --item 2 --content-type=application/json
-Oct 26, 2025 21:30:39.456 [548066213944] DEBUG - Opening 20 database sessions to library (com.plexapp.plugins.library), SQLite 3.39.4, threadsafe=1
-Oct 26, 2025 21:30:40.680 [548066213944] DEBUG - Matcher: found 0 auxiliary files for Season 1
-Oct 26, 2025 21:30:40.704 [548066213944] DEBUG - Matcher: no sidecar subtitle files found for /data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv

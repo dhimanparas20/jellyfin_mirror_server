@@ -1,6 +1,0 @@
-Oct 26, 2025 21:30:34.494 [547746582008] INFO - Plex Media Scanner v1.42.2.10156-f737b826c - Docker Docker Container (LinuxServer.io) aarch64 - build: linux-aarch64 - GMT 05:30
-Oct 26, 2025 21:30:34.495 [547746582008] INFO - Linux version: 6.12.34+rpt-rpi-v8, language: en-US
-Oct 26, 2025 21:30:34.496 [547746582008] INFO - Processor: 4-core ARM Cortex-A53
-Oct 26, 2025 21:30:34.496 [547746582008] INFO - /usr/lib/plexmediaserver/Plex Media Scanner --match --type 2 --log-file-suffix  Matcher --item 1 --content-type=application/json
-Oct 26, 2025 21:30:34.496 [547827011640] DEBUG - Opening 20 database sessions to library (com.plexapp.plugins.library), SQLite 3.39.4, threadsafe=1
-Oct 26, 2025 21:30:35.057 [547827011640] DEBUG - Matcher: found 0 auxiliary files for Reacher

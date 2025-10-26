@@ -1,5 +1,0 @@
-Oct 26, 2025 21:36:06.288 [548444125904] INFO - Crash Uploader - Session Health - Status: exited StartTime: 1761494695 Duration: 71 UserId: testprime2069@gmail.com Version: 1.42.2.10156-f737b826c
-Oct 26, 2025 21:36:06.291 [548475697296] DEBUG - [HCl#1] HTTP requesting POST https://o17675.ingest.sentry.io/api/1233455/envelope/?sentry_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-Oct 26, 2025 21:36:06.865 [548443982544] DEBUG - [HttpClient/HCl#1] HTTP/2.0 (0.6s) 200 response from POST https://o17675.ingest.sentry.io/api/1233455/envelope/?sentry_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-Oct 26, 2025 21:36:06.866 [548475697296] INFO - Successfully reported session health
-Oct 26, 2025 21:36:06.866 [548475697296] INFO - Crash Uploader - Processing Complete.
