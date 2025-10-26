@@ -1,11 +1,17 @@
+networks:
+  mynet:
+    driver: bridge
+
 services:
   aria2-ui:
     restart: unless-stopped
-    container_name: aria-mirror
+    container_name: aria2c
     image: wahyd4/aria2-ui:latest
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - mynet
     environment:
       # User and permissions
       - PUID=1000
@@ -21,8 +27,8 @@ services:
       - ARIA2_EXTERNAL_PORT=443
 
       # Domain and Caddyhello
-      - DOMAIN=https://go.mstservices.tech
-      - CADDY_LOG_LEVEL=WARN
+      - DOMAIN=t3.privatedns.org
+      - CADDY_LOG_LEVEL=INFO
       # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
       # FileBrowser
@@ -38,8 +44,29 @@ services:
       - RCLONE_AUTO_UPLOAD_FILE_MAX_SIZE=45G
       - FIX_DATA_VOLUME_PERMISSIONS=true
     volumes:
-      - ./downloads:/data
-      - ./filebrowser.db:/app/filebrowser.db
+      - ./data:/data
       - ./cache:/app/.cache
       - ./configs/rclone.conf:/app/conf/rclone.conf
+#      - ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
 #      - ./configs/aria2.conf:/app/conf/aria2.conf  #This cuases gdrive upload to not work
+
+
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+#    network_mode: host  # Important for Plex discovery and DLNA to work properly
+    environment:
+      - PUID=1000       # Replace with your user ID
+      - PGID=1000       # Replace with your group ID
+      - TZ=Asia/Kolkata # Set your timezone
+      - PLEX_CLAIM=claim-eSq-C-bKLhq5bR_ZhH4L
+    volumes:
+      - ./config:/config           # Plex configuration
+      - ./data:/data/tvshows    # TV shows folder
+      - ./data:/data/movies      # Movies folder
+    restart: unless-stopped
+    networks:
+      - mynet
+    ports:
+      - "32400:32400"
+

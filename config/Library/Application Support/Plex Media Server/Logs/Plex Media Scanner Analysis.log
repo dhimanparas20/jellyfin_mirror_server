@@ -1,0 +1,155 @@
+Oct 26, 2025 21:30:31.215 [548557757944] INFO - Plex Media Scanner v1.42.2.10156-f737b826c - Docker Docker Container (LinuxServer.io) aarch64 - build: linux-aarch64 - GMT 05:30
+Oct 26, 2025 21:30:31.221 [548557757944] INFO - Linux version: 6.12.34+rpt-rpi-v8, language: en-US
+Oct 26, 2025 21:30:31.221 [548557757944] INFO - Processor: 4-core ARM Cortex-A53
+Oct 26, 2025 21:30:31.221 [548557757944] INFO - /usr/lib/plexmediaserver/Plex Media Scanner --analyze --log-file-suffix  Analysis --no-thumbs --item 3
+Oct 26, 2025 21:30:31.216 [548638232632] DEBUG - Opening 20 database sessions to library (com.plexapp.plugins.library), SQLite 3.39.4, threadsafe=1
+Oct 26, 2025 21:30:31.753 [548638232632] DEBUG - Analyzing media parts for item 3 (Welcome to Margrave): 1
+Oct 26, 2025 21:30:31.757 [548638232632] DEBUG - Downloading document http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:31.757 [548638232632] DEBUG - [HCl#1] HTTP requesting GET http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:31.761 [548547653112] DEBUG - [HttpClient/HCl#1] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:31.761 [548638232632] DEBUG - Updating metadata item (save) (Welcome to Margrave) with ID 3
+Oct 26, 2025 21:30:31.770 [548546981368] DEBUG - [HCl#2] HTTP requesting GET http://127.0.0.1:32400/:/metadata/flushMetadataCounterCache?metadataItemID=1
+Oct 26, 2025 21:30:31.774 [548547653112] DEBUG - [HttpClient/HCl#2] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/:/metadata/flushMetadataCounterCache?metadataItemID=1 (reused)
+Oct 26, 2025 21:30:31.775 [548638232632] DEBUG - [ID 1] Media part analysis: /data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv
+Oct 26, 2025 21:30:31.780 [548638232632] DEBUG - [MI] Opening input file: "/data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+Oct 26, 2025 21:30:31.815 [548638232632] DEBUG - [FFMPEG] - Opening '/data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv' for reading
+Oct 26, 2025 21:30:31.827 [548638232632] DEBUG - [FFMPEG] - Setting default whitelist 'file,crypto,data'
+Oct 26, 2025 21:30:31.887 [548638232632] DEBUG - [FFMPEG] - Format matroska,webm probed with size=2048 and score=100
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4418
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4615
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4674
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4721
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4785
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4840
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4894
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 4948
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5002
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5056
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5128
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5192
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5246
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5301
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5355
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5409
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5463
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5517
+Oct 26, 2025 21:30:31.888 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5571
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5625
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5679
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5733
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5787
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5841
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5895
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 5949
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6012
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6077
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6131
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6185
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6239
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6293
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6347
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6401
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6455
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x22B59D at pos. 6520
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8638
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8687
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8743
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8792
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8841
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8890
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8939
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 8988
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9037
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9087
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9137
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9187
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9237
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9288
+Oct 26, 2025 21:30:31.889 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9339
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9390
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9441
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9492
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9543
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9594
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9645
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9696
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9747
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9798
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9849
+Oct 26, 2025 21:30:31.890 [548638232632] DEBUG - [FFMPEG] - Unknown entry 0x437D at pos. 9903
+Oct 26, 2025 21:30:31.903 [548638232632] DEBUG - [FFMPEG] - st:0 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.903 [548638232632] DEBUG - [FFMPEG] - st:1 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.903 [548638232632] DEBUG - [FFMPEG] - st:2 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.903 [548638232632] DEBUG - [FFMPEG] - st:3 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:4 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:5 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:6 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:7 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:8 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:9 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:10 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:11 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:12 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:13 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:14 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:15 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:16 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:17 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:18 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:19 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:20 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:21 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:22 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:23 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:24 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:25 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:26 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:27 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:28 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:29 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:30 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:31 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.904 [548638232632] DEBUG - [FFMPEG] - st:32 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.905 [548638232632] DEBUG - [FFMPEG] - st:33 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.905 [548638232632] DEBUG - [FFMPEG] - st:34 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.905 [548638232632] DEBUG - [FFMPEG] - st:35 removing common factor 1000000 from timebase
+Oct 26, 2025 21:30:31.911 [548638232632] INFO - CodecManager: obtaining decoder 'hevc'
+Oct 26, 2025 21:30:31.911 [548638232632] DEBUG - [HCl#3] HTTP requesting GET https://plex.tv/api/codecs/hevc_decoder?build=linux-aarch64-standard&deviceId=fe559cd3-a0ab-442b-8e18-aa2383e0684c&oldestPreviousVersion=1%2E42%2E2%2E10156-f737b826c&version=46f74ab-560174306fe167a5978a79dd
+Oct 26, 2025 21:30:33.101 [548547653112] DEBUG - [HttpClient/HCl#3] HTTP/1.1 (1.2s) 200 response from GET https://plex.tv/api/codecs/hevc_decoder?build=linux-aarch64-standard&deviceId=fe559cd3-a0ab-442b-8e18-aa2383e0684c&oldestPreviousVersion=1%2E42%2E2%2E10156-f737b826c&version=46f74ab-560174306fe167a5978a79dd
+Oct 26, 2025 21:30:33.102 [548547128824] DEBUG - [GetFile/HCl#4] HTTP requesting GET https://downloads.plex.tv/codecs/46f74ab-560174306fe167a5978a79dd/linux-aarch64-standard/libhevc_decoder.so
+Oct 26, 2025 21:30:33.358 [548547653112] DEBUG - [HttpClient/HCl#4] HTTP/2.0 (0.3s) 200 response from GET https://downloads.plex.tv/codecs/46f74ab-560174306fe167a5978a79dd/linux-aarch64-standard/libhevc_decoder.so
+Oct 26, 2025 21:30:33.471 [548638232632] DEBUG - [FFMPEG] - Before avformat_find_stream_info() pos: 10015 bytes read:44357 seeks:2 nb_streams:36
+Oct 26, 2025 21:30:33.485 [548638232632] DEBUG - [FFMPEG] - nal_unit_type: 32(VPS), nuh_layer_id: 0, temporal_id: 0
+Oct 26, 2025 21:30:33.485 [548638232632] DEBUG - [FFMPEG] - Decoding VPS
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - Main 10 profile bitstream
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - nal_unit_type: 33(SPS), nuh_layer_id: 0, temporal_id: 0
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - Decoding SPS
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - Main 10 profile bitstream
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - Decoding VUI
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - nal_unit_type: 34(PPS), nuh_layer_id: 0, temporal_id: 0
+Oct 26, 2025 21:30:33.486 [548638232632] DEBUG - [FFMPEG] - Decoding PPS
+Oct 26, 2025 21:30:33.500 [548638232632] DEBUG - [FFMPEG] - All info found
+Oct 26, 2025 21:30:33.501 [548638232632] DEBUG - [FFMPEG] - After avformat_find_stream_info() pos: 12784 bytes read:77125 seeks:2 frames:11
+Oct 26, 2025 21:30:33.527 [548638232632] DEBUG - [MI]  * c83f06e85ddbf2883a801578e0c33cf1a14a2124 [mkv hevc/aac] Duration: 3243491ms, 1280x640 (2.000000) 23.976fps, bitrate=739kbps, audio channels=2, optimizedForStreaming=0 ("/data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv")
+Oct 26, 2025 21:30:33.527 [548638232632] DEBUG - [MI] Importing 26 media chapters.
+Oct 26, 2025 21:30:33.529 [548638232632] DEBUG - [MI] Closing input file: "/data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+Oct 26, 2025 21:30:33.551 [548638232632] DEBUG - Committing media stream changes for part 1
+Oct 26, 2025 21:30:33.557 [548638232632] DEBUG - Updating media item 1, size=299816720, metadata_item_id=3
+Oct 26, 2025 21:30:33.557 [548638232632] DEBUG - Updating part with ID=1 [/data/tvshows/Reacher.S01E01.Welcome.to.Margrave.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv]
+Oct 26, 2025 21:30:33.559 [548546981368] DEBUG - [HCl#5] HTTP requesting GET http://127.0.0.1:32400/:/metadata/notify/changeItemState?librarySectionID=2&metadataItemID=3&metadataType=4&state=-1&parentID=-1&rootID=-1&mediaState=analyzing
+Oct 26, 2025 21:30:33.562 [548547653112] DEBUG - [HttpClient/HCl#5] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/:/metadata/notify/changeItemState?librarySectionID=2&metadataItemID=3&metadataType=4&state=-1&parentID=-1&rootID=-1&mediaState=analyzing (reused)
+Oct 26, 2025 21:30:33.562 [548546981368] DEBUG - [HCl#6] HTTP requesting GET http://127.0.0.1:32400/:/metadata/notify/changeItemState?librarySectionID=2&metadataItemID=3&metadataType=4&state=-1&parentID=-1&rootID=-1&mediaState=idle
+Oct 26, 2025 21:30:33.566 [548547653112] DEBUG - [HttpClient/HCl#6] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/:/metadata/notify/changeItemState?librarySectionID=2&metadataItemID=3&metadataType=4&state=-1&parentID=-1&rootID=-1&mediaState=idle (reused)
+Oct 26, 2025 21:30:33.581 [548638232632] DEBUG - Downloading document http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:33.581 [548638232632] DEBUG - [HCl#7] HTTP requesting GET http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:33.583 [548547653112] DEBUG - [HttpClient/HCl#7] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/library/changestamp (reused)
+Oct 26, 2025 21:30:33.584 [548638232632] DEBUG - Updating metadata item (save) (Welcome to Margrave) with ID 3
+Oct 26, 2025 21:30:33.587 [548546981368] DEBUG - [HCl#8] HTTP requesting GET http://127.0.0.1:32400/:/metadata/flushMetadataCounterCache?metadataItemID=1
+Oct 26, 2025 21:30:33.589 [548547653112] DEBUG - [HttpClient/HCl#8] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/:/metadata/flushMetadataCounterCache?metadataItemID=1 (reused)
+Oct 26, 2025 21:30:33.590 [548638232632] DEBUG - Doing expensive tags write for 'Welcome to Margrave' because something changed.
+Oct 26, 2025 21:30:33.609 [548638232632] DEBUG - Downloading document http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:33.609 [548638232632] DEBUG - [HCl#9] HTTP requesting GET http://127.0.0.1:32400/library/changestamp
+Oct 26, 2025 21:30:33.612 [548547653112] DEBUG - [HttpClient/HCl#9] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/library/changestamp (reused)
+Oct 26, 2025 21:30:33.612 [548638232632] DEBUG - Updating metadata item (save) (Welcome to Margrave) with ID 3
+Oct 26, 2025 21:30:33.615 [548546981368] DEBUG - [HCl#a] HTTP requesting GET http://127.0.0.1:32400/:/metadata/flushMetadataCounterCache?metadataItemID=1
+Oct 26, 2025 21:30:33.617 [548547653112] DEBUG - [HttpClient/HCl#a] HTTP/1.1 (0.0s) 200 response from GET http://127.0.0.1:32400/:/metadata/flushMetadataCounterCache?metadataItemID=1 (reused)
