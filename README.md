@@ -1,25 +1,49 @@
-# Mirror Server
+# Mirror Media Server Stack
 
-A powerful, self-hosted, all-in-one download, media, and file management suite, designed for easy deployment on your own server or cloud VM (such as AWS EC2).  
-This project combines [Aria2](https://aria2.github.io/), [FileBrowser](https://filebrowser.org/), [Rclone](https://rclone.org/), [Jellyfin](https://jellyfin.org/), and [Caddy](https://caddyserver.com/) for secure, flexible, and user-friendly access to your downloads and media.
-
-### Uses the follwing Repos
-- [Aria2 UI](https://github.com/wahyd4/aria2-ariang-docker)
-- [Aria2 Docker Compose](https://github.com/wahyd4/aria2-ariang-x-docker-compose/tree/master)
+A powerful, self-hosted, all-in-one download, media, and automation suite.  
+Easily deploy your own media server, download manager, and automation tools using Docker Compose.
 
 ---
 
-## 🚀 About
+## 🚀 Features
 
-**Mirror Server** is a Docker-based stack that lets you:
-- Download files via Aria2 (with a modern web UI)
-- Browse and manage files with FileBrowser
-- Stream your media library with Jellyfin
-- Mount and index cloud storage with Rclone
-- Serve everything securely over HTTPS with Caddy
-- Easily expose endpoints on your own custom domains
+- **Aria2**: Fast, multi-protocol downloader with web UI.
+- **FileBrowser**: Web-based file manager (bundled with Aria2 UI).
+- **Jellyfin**: Free, open-source media server for streaming your movies, TV, and anime.
+- **Jellyseerr**: Media request and discovery platform for Jellyfin.
+- **Radarr**: Automated movie downloader and organizer.
+- **Sonarr**: Automated TV series downloader and organizer.
+- **Sonarr-Anime**: Dedicated Sonarr instance for anime.
+- **qBittorrent**: Powerful torrent client with modern web UI (Vuetorrent mod included).
+- **Jackett**: Torrent indexer aggregator for Radarr/Sonarr.
+- **Flaresolverr**: Bypass Cloudflare for indexers that require it.
 
-This setup is ideal for personal media servers, seedboxes, or as a private cloud solution.
+---
+
+## 📁 Directory Structure
+
+```
+project-root/
+├── cache/
+├── config/
+│   ├── aria2c/
+│   │   └── rclone.conf
+│   ├── jellyfin/
+│   ├── jellyseerr/
+│   ├── radarr/
+│   ├── sonarr/
+│   ├── sonarr-anime/
+│   ├── qbittorrent/
+│   └── jackett/
+├── data/
+│   └── media/
+│       ├── movies/
+│       ├── tv/
+│       └── anime/
+├── torrents/
+├── compose.yml
+└── README.md
+```
 
 ---
 
@@ -28,39 +52,52 @@ This setup is ideal for personal media servers, seedboxes, or as a private cloud
 ### 1. **Clone the Repository**
 
 ```sh
-git clone https://github.com/dhimanparas20/mirror_server
-cd mirror_server
+git clone <your-repo-url>
+cd <repo-folder>
 ```
 
 ---
 
-### 2. **Configure Your Domains**
+### 2. **Set Permissions (Important!)**
 
-- **Edit `compose.yml`:**
-  ```sh
-  nano compose.yml
-  ```
-  - Find the `DOMAIN` environment variable and set it to your domain (e.g., `mirror.yourdomain.com`).
-  - **Make sure your domain's DNS A record points to your server's public IP.**
-
-- **Edit the Caddyfile:**
-  ```sh
-  nano configs/SecureCaddyfile
-  ```
-  - Change the **first line** to your Jellyfin domain (e.g., `t1.yourdomain.com {`).
-  - Make sure this domain also points to your server's public IP.
-
----
-
-### 3. **Start the Services**
+Ensure the correct permissions for all persistent folders:
 
 ```sh
-sudo docker compose up --build -d
+sudo chown -R 1000:1000 ./downloads ./torrents ./config ./data
+sudo chmod -R 775 ./downloads ./torrents
+sudo chmod -R 755 ./config ./data
 ```
 
 ---
 
-### 4. **Replace the Caddyfile in the Container**
+### 3. **Configure Environment Variables**
+
+- Edit `compose.yml` to set your preferred usernames, passwords, secrets, and domains.
+- For Aria2, set `ARIA2_USER`, `ARIA2_PWD`, and `RPC_SECRET`.
+- For Caddy/Aria2, set the `DOMAIN` variable to your domain (ensure DNS is set up).
+
+---
+
+### 4. **Edit the Caddyfile**
+
+- Edit the Caddyfile for your domain and service needs:
+  ```sh
+  nano ./config/aria2c/SecureCaddyfile
+  ```
+  - Change the **first line** to your domain (e.g., `t3.privatedns.org {`).
+  - Make sure your domain's DNS A record points to your server's public IP.
+
+---
+
+### 5. **Start All Services**
+
+```sh
+docker compose up -d
+```
+
+---
+
+### 6. **Replace the Caddyfile in the Container**
 
 After the services have started, run the following commands to install `nano` (optional), backup the original Caddyfile, and copy your edited Caddyfile into the container:
 
@@ -68,12 +105,12 @@ After the services have started, run the following commands to install `nano` (o
 sudo docker exec -it aria2c apt update -y
 sudo docker exec -it aria2c apt install nano -y
 sudo docker exec -it aria2c mv /usr/local/caddy/SecureCaddyfile /usr/local/caddy/SecureCaddyfile_old
-sudo docker cp ./configs/SecureCaddyfile aria2c:/usr/local/caddy/SecureCaddyfile
+sudo docker cp ./config/aria2c/SecureCaddyfile aria2c:/usr/local/caddy/SecureCaddyfile
 ```
 
 ---
 
-### 5. **Restart Caddy Service**
+### 7. **Restart Caddy Service**
 
 ```sh
 sudo docker compose restart aria2c
@@ -85,77 +122,134 @@ sudo docker compose restart aria2c
 
 ---
 
-## 🌐 Endpoints
+## 🌐 Service Endpoints & Usage
 
-| Service         | URL                                                      |
-|-----------------|---------------------------------------------------------|
-| Aria2 Web UI    | https://go.mstservices.tech                             |
-| FileBrowser     | https://go.mstservices.tech/files                       |
-| Readonly Files  | https://go.mstservices.tech/ro                          |
-| Rclone          | https://go.mstservices.tech/rclone                      |
-| Gdrive Index    | https://luffy.mst-uploads.workers.dev/0:/               |
-| Jellyfin Server | https://t1.mstservices.tech/web/                        |
-
-> **Note:** Replace the above domains with your own if you changed them in the setup.
-
----
-
-## 📁 Directory Structure
-
-```
-mirror_server/
-├── cache/
-├── configs/
-│   ├── SecureCaddyfile
-│   └── rclone.conf
-├── data/
-├── compose.yml
-└── README.md
-```
-
-- **data/**: Your downloads and media files
-- **configs/**: Configuration files for Caddy and Rclone
-- **cache/**: Cache directory for services
-- **compose.yml**: Docker Compose stack definition
+| Service         | URL / Port           | Default Credentials / Notes                        | Usage Summary |
+|-----------------|---------------------|----------------------------------------------------|---------------|
+| **Aria2 UI**    | http://<host>:80     | Set via `ARIA2_USER`/`ARIA2_PWD`                   | Download manager for HTTP, FTP, BitTorrent, Metalink. Web UI included. |
+| **FileBrowser** | http://<host>:80/files | Same as Aria2 UI                                   | Browse, upload, and manage files in your data directory. |
+| **Jellyfin**    | http://<host>:8096   | Create user on first launch                        | Stream your movies, TV, and anime to any device. |
+| **Jellyseerr**  | http://<host>:5055   | Create admin on first launch                       | Request movies/series, integrates with Radarr/Sonarr/Jellyfin. |
+| **Radarr**      | http://<host>:7878   | Create admin on first launch                       | Automated movie downloads via torrents. |
+| **Sonarr**      | http://<host>:8989   | Create admin on first launch                       | Automated TV series downloads via torrents. |
+| **Sonarr-Anime**| http://<host>:8990   | Create admin on first launch                       | Dedicated for anime series automation. |
+| **qBittorrent** | http://<host>:45789  | Username: `admin` / Password: `see container logs` | Modern torrent client with Vuetorrent UI. Change password after first login! |
+| **Jackett**     | http://<host>:9117   | Set on first launch                                | Add torrent indexers for Radarr/Sonarr. |
+| **Flaresolverr**| http://<host>:8191   | N/A                                                | Used by Jackett to bypass Cloudflare. No direct UI. |
 
 ---
 
-## 📝 Additional Info
+## 🧩 Service Details & First-Time Setup
 
-- **Security:** All endpoints are served over HTTPS via Caddy with automatic Let's Encrypt certificates.
-- **Persistence:** All important data and configs are stored in bind-mounted volumes for easy backup and migration.
-- **Customization:** You can add/remove services or tweak configs as needed for your use case.
-- **Cloud Ready:** Works great on AWS EC2, DigitalOcean, or any VPS with Docker.
+### **Aria2 + FileBrowser**
+- **Purpose:** Download files via HTTP, FTP, BitTorrent, Metalink. Manage files via web UI.
+- **Access:** http://<host>:80
+- **Credentials:** Set via `ARIA2_USER` and `ARIA2_PWD` in `compose.yml`.
+- **Tips:** Use FileBrowser for file management and uploads.
+
+### **Jellyfin**
+- **Purpose:** Media server for streaming movies, TV, anime.
+- **Access:** http://<host>:8096
+- **First Run:** Create an admin user and point your libraries to `/media` (mapped to `./data/media`).
+- **Tips:** Use Jellyfin apps for TV, mobile, or web.
+
+### **Jellyseerr**
+- **Purpose:** Media request platform for users to request movies/series.
+- **Access:** http://<host>:5055
+- **First Run:** Create an admin account, connect to Jellyfin, Radarr, and Sonarr in settings.
+- **Tips:** Invite users to request content, approve/deny requests as admin.
+
+### **Radarr**
+- **Purpose:** Automated movie downloads.
+- **Access:** http://<host>:7878
+- **First Run:** Set up root folder as `/movies` (mapped to `./data/media/movies`), add indexers (via Jackett), and connect to qBittorrent.
+- **Tips:** Use Jackett for torrent indexers, set up quality profiles.
+
+### **Sonarr**
+- **Purpose:** Automated TV series downloads.
+- **Access:** http://<host>:8989
+- **First Run:** Set up root folder as `/tv` (mapped to `./data/media/tv`), add indexers (via Jackett), and connect to qBittorrent.
+
+### **Sonarr-Anime**
+- **Purpose:** Dedicated Sonarr instance for anime.
+- **Access:** http://<host>:8990
+- **First Run:** Set up root folder as `/anime` (mapped to `./data/media/anime`), add anime-specific indexers, and connect to qBittorrent.
+
+### **qBittorrent**
+- **Purpose:** Torrent client for automated and manual downloads.
+- **Access:** http://<host>:45789
+- **Credentials:** Username: `admin`, Password: `adminadmin` (change after first login!)
+- **Tips:** Used by Radarr/Sonarr for automated downloads. Supports Vuetorrent UI mod.
+
+### **Jackett**
+- **Purpose:** Aggregates torrent indexers for Radarr/Sonarr.
+- **Access:** http://<host>:9117
+- **First Run:** Add your favorite indexers, copy each Torznab feed URL, and add them individually to Radarr/Sonarr.
+- **Tips:** Do **not** use the `/all` endpoint; add each indexer separately.
+
+### **Flaresolverr**
+- **Purpose:** Bypass Cloudflare for indexers that require it.
+- **Access:** No web UI. Used by Jackett automatically.
+- **Tips:** No configuration needed unless troubleshooting indexer access.
 
 ---
 
-## 🧑‍💻 Contributing
+## ⚡ Usage Workflow
+
+1. **Download files manually:** Use Aria2 UI or FileBrowser.
+2. **Automated movie/TV/anime downloads:**  
+   - Users request content via Jellyseerr.
+   - Admin approves requests.
+   - Radarr/Sonarr/Anime fetch torrents via Jackett and send to qBittorrent.
+   - qBittorrent downloads files to `./torrents`.
+   - Radarr/Sonarr moves completed files to `./data/media/movies`, `./data/media/tv`, or `./data/media/anime`.
+   - Jellyfin indexes new media for streaming.
+
+3. **Stream your media:** Use Jellyfin web or apps.
+
+---
+
+## 🔒 Security & Best Practices
+
+- **Change all default passwords** (especially qBittorrent and Aria2).
+- **Use HTTPS** (via Caddy or reverse proxy) for public access.
+- **Restrict ports** on your firewall if not using a reverse proxy.
+- **Back up your `config/` and `data/` folders** regularly.
+
+---
+
+## 🛠️ Maintenance & Troubleshooting
+
+- **Restart all services:**  
+  `docker compose restart`
+- **View logs for a service:**  
+  `docker compose logs <service-name>`
+- **Update images:**  
+  `docker compose pull && docker compose up -d`
+- **Fix permissions:**  
+  ```
+  sudo chown -R 1000:1000 ./downloads ./torrents ./config ./data
+  sudo chmod -R 775 ./downloads ./torrents
+  sudo chmod -R 755 ./config ./data
+  ```
+
+---
+
+## 📝 Notes
+
+- **Do not use the Jackett `/all` endpoint** in Radarr/Sonarr. Add each indexer individually.
+- **Anime automation:** Use the dedicated Sonarr-Anime instance for best results.
+- **Plex is commented out** because it does not support remote hosting in this setup.
+
+---
+
+## 🤝 Contributing
 
 Pull requests and suggestions are welcome!  
-Feel free to fork and adapt for your own needs.
+Fork and adapt for your own needs.
 
 ---
 
 ## 📞 Support
 
-For issues or questions, open an [issue on GitHub](https://github.com/dhimanparas20/mirror_server/issues) or contact the maintainer.
-
----
-
-## ⚡ Credits
-
-- [Aria2](https://aria2.github.io/)
-- [FileBrowser](https://filebrowser.org/)
-- [Rclone](https://rclone.org/)
-- [Jellyfin](https://jellyfin.org/)
-- [Caddy](https://caddyserver.com/)
-
----
-
-Enjoy your all-in-one media and download server! 🎉
-
-## for permissions
-- sudo chown -R 1000:1000 ./downloads
-- sudo chmod -R 775 ./downloads
-- sudo chown -R 1000:1000 ./config
-- sudo chmod -R 755 ./config
+For issues or questions, open an issue on GitHub or contact the maintainer.

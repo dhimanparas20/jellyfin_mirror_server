@@ -2,6 +2,12 @@ cache
 downloads
 data
 filebrowser.db
-config
 torrents
-jfconfig
+
+# Config
+config/jackett
+config/jellyfin
+config/jellyseerr
+config/qbittorrent
+config/radarr
+config/sonarr

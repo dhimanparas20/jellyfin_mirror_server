@@ -1,8 +1,11 @@
 networks:
-  mynet:
+  mst:
     driver: bridge
 
+# Total 9 services are there, all run under mst network
 services:
+
+  # For aria2,file browser, caddy and index site
   aria2c:
     restart: unless-stopped
     container_name: aria2c
@@ -11,7 +14,7 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - mynet
+      - mst
     environment:
       # User and permissions
       - PUID=1000
@@ -46,60 +49,42 @@ services:
     volumes:
       - ./data:/data
       - ./cache:/app/.cache
-      - ./configs/rclone.conf:/app/conf/rclone.conf
-      - ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
-#      - ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
-#      - ./configs/aria2.conf:/app/conf/aria2.conf  #This cuases gdrive upload to not work
+      - ./config/aria2c/rclone.conf:/app/conf/rclone.conf
+      #- ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
+      #- ./configs/aria2.conf:/app/conf/aria2.conf  #This cuases gdrive upload to not work
 
-#  plex:
-#    container_name: plex
-#    image: spritsail/plex-media-server
-#    volumes:
-#      - ./data:/media:rw # The media folder
-#      - ./transcode:/transcode # Transcoder temporary directory
-#      - ./config:/config # Configurations
-#    environment:
-#      - LOG_DEBUG=0
-#      - LOG_VERBOSE=0
-#      - PLEX_CLAIM=claim-5PhyapPgsC31GUA_YHLB
-#    restart: unless-stopped
-#    hostname: "kens-plex-server" # change the name to whatever you like
-#    ports:
-#      - "32400:32400" # The web port
-#      - "3005:3005" # The following ports are optional
-
+  # For Streaming Content
   jellyfin:
-    image: jellyfin/jellyfin:latest
+    image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    user: 1000:1000
-    environment:
-      - TZ=UTC
-    volumes:
-      - ./data:/media
-      - ./config:/config
-      - ./cache:/cache
-    ports:
-      - 8096:8096   # HTTP web interface
-      - 8920:8920 # HTTPS (optional, needs extra setup)
-      - 7359:7359/udp # Auto-discovery (optional)
-      - 1900:1900/udp # DLNA (optional)
     restart: unless-stopped
+    ports:
+      - "8096:8096"
+    volumes:
+      - ./config/jellyfin:/config
+      - ./data/media:/media
+      - /dev/shm:/dev/shm
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
     networks:
-      - mynet
+      - mst
 
+  # For requesting movies and series
   jellyseerr:
     image: ghcr.io/fallenbagel/jellyseerr:latest
     init: true
     container_name: jellyseerr
     environment:
       - LOG_LEVEL=debug
-      - TZ=Asia/Tashkent
+      - TZ=Asia/Kolkata
       - PORT=5055 #optional
     ports:
       - 5055:5055
     volumes:
-      - ./data:/media
-      - /jfconfig:/app/config
+      - ./data/media:/media
+      - ./config/jellyseerr:/app/config
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
@@ -108,8 +93,9 @@ services:
       retries: 3
     restart: unless-stopped
     networks:
-      - mynet
+      - mst
 
+  # For downloading movies
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
@@ -119,15 +105,16 @@ services:
     volumes:
       - ./config/radarr:/config
       - ./torrents:/downloads
-      - ./data:/movies
+      - ./data/media/movies:/movies
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
       - UMASK_SET=00
     networks:
-      - mynet
+      - mst
 
+  # For downloading series
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -137,15 +124,35 @@ services:
     volumes:
       - ./config/sonarr:/config
       - ./torrents:/downloads
-      - ./data:/tv
+      - ./data/media/tv:/tv
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
       - UMASK_SET=00
     networks:
-      - mynet
+      - mst
 
+#  # For downloading anime series
+#  sonarr-anime:
+#    image: lscr.io/linuxserver/sonarr:latest
+#    container_name: sonarr-anime
+#    restart: unless-stopped
+#    ports:
+#      - "8990:8989"
+#    volumes:
+#      - ./config/sonarr-anime:/config
+#      - ./torrents:/downloads
+#      - ./data/media/anime:/anime
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Asia/Kolkata
+#      - UMASK_SET=00
+#    networks:
+#      - mst
+
+  # Torrent Client
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -165,8 +172,9 @@ services:
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
       - UMASK_SET=002
     networks:
-      - mynet
+      - mst
 
+  # For searching torrents clients and adding indexers
   jackett:
     image: lscr.io/linuxserver/jackett:latest
     container_name: jackett
@@ -180,4 +188,35 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     networks:
-      - mynet
+      - mst
+
+  # For bypassing cloudflare
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    restart: unless-stopped
+    ports:
+      - "8191:8191"
+    environment:
+      - LOG_LEVEL=info
+      - TZ=Asia/Kolkata
+    networks:
+      - mst
+
+# Don't use plex as it doesn't support remote hosting
+#  plex:
+#    container_name: plex
+#    image: spritsail/plex-media-server
+#    volumes:
+#      - ./data:/media:rw # The media folder
+#      - ./transcode:/transcode # Transcoder temporary directory
+#      - ./config:/config # Configurations
+#    environment:
+#      - LOG_DEBUG=0
+#      - LOG_VERBOSE=0
+#      - PLEX_CLAIM=claim-5PhyapPgsC31GUA_YHLB
+#    restart: unless-stopped
+#    hostname: "kens-plex-server" # change the name to whatever you like
+#    ports:
+#      - "32400:32400" # The web port
+#      - "3005:3005" # The following ports are optional
