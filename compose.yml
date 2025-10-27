@@ -27,7 +27,7 @@ services:
       - ARIA2_EXTERNAL_PORT=443
 
       # Domain and Caddyhello
-      - DOMAIN=mirror.mstservices.tech
+      - DOMAIN=t3.privatedns.org
       - CADDY_LOG_LEVEL=INFO
       # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
@@ -80,9 +80,104 @@ services:
       - ./cache:/cache
     ports:
       - 8096:8096   # HTTP web interface
-      # - 8920:8920 # HTTPS (optional, needs extra setup)
-      # - 7359:7359/udp # Auto-discovery (optional)
-      # - 1900:1900/udp # DLNA (optional)
+      - 8920:8920 # HTTPS (optional, needs extra setup)
+      - 7359:7359/udp # Auto-discovery (optional)
+      - 1900:1900/udp # DLNA (optional)
     restart: unless-stopped
+    networks:
+      - mynet
+
+  jellyseerr:
+    image: ghcr.io/fallenbagel/jellyseerr:latest
+    init: true
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Asia/Tashkent
+      - PORT=5055 #optional
+    ports:
+      - 5055:5055
+    volumes:
+      - ./data:/media
+      - /jfconfig:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mynet
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    ports:
+      - "7878:7878"
+    volumes:
+      - ./config/radarr:/config
+      - ./torrents:/downloads
+      - ./data:/movies
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - UMASK_SET=00
+    networks:
+      - mynet
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    ports:
+      - "8989:8989"
+    volumes:
+      - ./config/sonarr:/config
+      - ./torrents:/downloads
+      - ./data:/tv
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - UMASK_SET=00
+    networks:
+      - mynet
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+    ports:
+      - "45789:45789"
+      - "6881:6881"
+      - "6881:6881/udp"
+    volumes:
+      - ./config/qbittorrent:/config
+      - ./torrents:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - WEBUI_PORT=45789
+      - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
+      - UMASK_SET=002
+    networks:
+      - mynet
+
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    restart: unless-stopped
+    ports:
+      - "9117:9117"
+    volumes:
+      - ./config/jackett:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
     networks:
       - mynet

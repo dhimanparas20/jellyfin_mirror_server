@@ -1,4 +1,4 @@
-t1.mstservices.tech {
+t4.privatedns.org {
     reverse_proxy jellyfin:8096
 }
 {$DOMAIN} {
