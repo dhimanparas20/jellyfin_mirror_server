@@ -2,7 +2,7 @@ networks:
   mst:
     driver: bridge
 
-# Total 9 services are there, all run under mst network
+# Total 8 services are there, all run under mst network
 services:
 
   # For aria2,file browser, caddy and index site
@@ -30,7 +30,7 @@ services:
       - ARIA2_EXTERNAL_PORT=443
 
       # Domain and Caddyhello
-      - DOMAIN=t3.privatedns.org
+      - DOMAIN=go.mstservices.tech
       - CADDY_LOG_LEVEL=INFO
       # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
