@@ -1,25 +1,25 @@
-jf.mstservices.tech {
+jf.mstservices.{$DOMAIN} {
     reverse_proxy jellyfin:8096
 }
-jfsr.mstservices.tech {
+jfsr.mstservices.{$DOMAIN} {
     reverse_proxy jellyseerr:5055
 }
-radarr.mstservices.tech {
+radarr.mstservices.{$DOMAIN} {
     reverse_proxy radarr:7878
 }
-sonarr.mstservices.tech {
+sonarr.mstservices.{$DOMAIN} {
     reverse_proxy sonarr:8989
 }
-qb.mstservices.tech {
+qb.mstservices.{$DOMAIN} {
     reverse_proxy qbittorrent:45789
 }
-jackett.mstservices.tech {
+jackett.{$DOMAIN} {
     reverse_proxy jackett:9117
 }
-flaresolverr.mstservices.tech {
+flaresolverr.{$DOMAIN} {
     reverse_proxy flaresolverr:8191
 }
-{$DOMAIN} {
+go.{$DOMAIN} {
     
     log {
     	level {env.CADDY_LOG_LEVEL}
