@@ -1,16 +1,16 @@
-jf.mstservices.{$DOMAIN} {
+jf.{$DOMAIN} {
     reverse_proxy jellyfin:8096
 }
-jfsr.mstservices.{$DOMAIN} {
+jfsr.{$DOMAIN} {
     reverse_proxy jellyseerr:5055
 }
-radarr.mstservices.{$DOMAIN} {
+radarr.{$DOMAIN} {
     reverse_proxy radarr:7878
 }
-sonarr.mstservices.{$DOMAIN} {
+sonarr.{$DOMAIN} {
     reverse_proxy sonarr:8989
 }
-qb.mstservices.{$DOMAIN} {
+qb.{$DOMAIN} {
     reverse_proxy qbittorrent:45789
 }
 jackett.{$DOMAIN} {
