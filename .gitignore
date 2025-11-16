@@ -3,6 +3,7 @@ downloads
 data
 filebrowser.db
 torrents
+.idea
 
 # Config
 config/jackett
