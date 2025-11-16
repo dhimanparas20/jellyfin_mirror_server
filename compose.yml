@@ -50,6 +50,7 @@ services:
       - ./data:/data
       - ./cache:/app/.cache
       - ./config/aria2c/rclone.conf:/app/conf/rclone.conf
+      - ./config/aria2c/filebrowser.db:/app/filebrowser.db
       #- ./configs/SecureCaddyfile:/etc/caddy/Caddyfile
       #- ./configs/aria2.conf:/app/conf/aria2.conf  #This cuases gdrive upload to not work
 
