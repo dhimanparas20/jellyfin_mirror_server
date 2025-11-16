@@ -20,6 +20,11 @@ services:
       - PUID=1000
       - PGID=1000
 
+      # Domain and Caddyhello
+      - DOMAIN=mstservices.tech
+      - CADDY_LOG_LEVEL=INFO
+      # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
+
       # Authentication
       - ENABLE_AUTH=true
       - ARIA2_USER=mst
@@ -28,11 +33,6 @@ services:
 
       # Aria2 settings
       - ARIA2_EXTERNAL_PORT=443
-
-      # Domain and Caddyhello
-      - DOMAIN=mstservices.tech
-      - CADDY_LOG_LEVEL=INFO
-      # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
       # FileBrowser
       - ENABLE_FILEBROWSER=true
