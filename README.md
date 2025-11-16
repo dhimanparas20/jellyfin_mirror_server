@@ -127,7 +127,7 @@ sudo docker compose restart aria2c
 | Service         | URL / Port           | Default Credentials / Notes                        | Usage Summary |
 |-----------------|---------------------|----------------------------------------------------|---------------|
 | **Aria2 UI**    | http://<host>:80     | Set via `ARIA2_USER`/`ARIA2_PWD`                   | Download manager for HTTP, FTP, BitTorrent, Metalink. Web UI included. |
-| **FileBrowser** | http://<host>:80/files | Same as Aria2 UI                                   | Browse, upload, and manage files in your data directory. |
+| **FileBrowser** | http://<host>:80/files | admin/admin for first time                       | Browse, upload, and manage files in your data directory. |
 | **Jellyfin**    | http://<host>:8096   | Create user on first launch                        | Stream your movies, TV, and anime to any device. |
 | **Jellyseerr**  | http://<host>:5055   | Create admin on first launch                       | Request movies/series, integrates with Radarr/Sonarr/Jellyfin. |
 | **Radarr**      | http://<host>:7878   | Create admin on first launch                       | Automated movie downloads via torrents. |
