@@ -21,7 +21,7 @@ services:
       - PGID=1000
 
       # Domain and Caddyhello
-      - DOMAIN=mstservices.tech
+      - DOMAIN=mstservices.me
       - CADDY_LOG_LEVEL=INFO
       # - CADDY_ACME_CA=https://acme-staging-v02.api.letsencrypt.org/directory
 
