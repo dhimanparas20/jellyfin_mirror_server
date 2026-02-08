@@ -26,7 +26,8 @@ go.{$DOMAIN} {
     	output stderr
     }
     
-    @protected path / /index.html /css/* /js/* /ro /ro/* /jsonrpc
+    # @protected path / /index.html /css/* /js/* /ro /ro/* /jsonrpc
+    @protected path / /index.html /css/* /js/* /jsonrpc
     
     basicauth @protected {
     	mst $2a$14$NpP4cu7fz6rCWD201XL0OOQk79WUy4D4Jdfx7eZCV2LHZVjDJ7V0u
