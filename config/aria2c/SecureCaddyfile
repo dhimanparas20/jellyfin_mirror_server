@@ -19,7 +19,7 @@ jackett.{$DOMAIN} {
 flaresolverr.{$DOMAIN} {
     reverse_proxy flaresolverr:8191
 }
-go.{$DOMAIN} {
+{$DOMAIN} {
     
     log {
     	level {env.CADDY_LOG_LEVEL}
